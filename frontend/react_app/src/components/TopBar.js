@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonAppBar() {
+export default function ButtonAppBar(props) {
   const classes = useStyles();
 
   return (
@@ -32,7 +32,8 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Arxiv Checker
           </Typography>
-          <Button color="inherit">Login</Button>
+          {!props.isAuthenticated ?<Button color="inherit">Login</Button>: null}
+          {props.isAuthenticated ? <Button color="inherit" onClick={()=>props.logout()}>Logout</Button> : null}
         </Toolbar>
       </AppBar>
     </div>
