@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 function Login(props) {
   const classes = useStyles();
 
-    const [username, setuserName] = React.useState(null);
+  const [username, setuserName] = React.useState(null);
   const [password, setPassword] = React.useState(null);
 
   const handleFormFieldChange = (event) => {
@@ -56,6 +56,14 @@ function Login(props) {
     e.preventDefault();
     props.onAuth(username, password);
   }
+
+  let history = useHistory();
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
+
+  React.useEffect(() => {
+    if (props.isAuthenticated) { history.replace(from) };
+  });
 
   return (
     <Container component="main" maxWidth="xs">
