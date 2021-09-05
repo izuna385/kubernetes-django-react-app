@@ -33,6 +33,7 @@ export default function ButtonAppBar(props) {
             Arxiv Checker
           </Typography>
           {!props.isAuthenticated ?<Button color="inherit">Login</Button>: null}
+          {props.isAuthenticated ? <Button color="inherit" href="/update_password">Update Password</Button> : null}
           {props.isAuthenticated ? <Button color="inherit" onClick={()=>props.logout()}>Logout</Button> : null}
         </Toolbar>
       </AppBar>
